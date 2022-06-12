@@ -1,5 +1,5 @@
 # Blog
-> my blog project based on boostrap and express
+> my blog project based on bootstrap and express
 ### start with
 ```js
 cd blog
