@@ -1,0 +1,7 @@
+.card-columns {
+    column-count: 4;
+}
+
+.card-body img {
+    width: 100%;
+}

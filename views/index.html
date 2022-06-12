@@ -1,0 +1,107 @@
+<%- include('header.html') -%>
+    <canvas class="live2d" id="live2d" width="150" height="400"></canvas>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <!-- <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol> -->
+        <div class="carousel-inner">
+            <% data['hots'].forEach((hot, index)=> { %>
+                <div class="carousel-item <%=index==1?'active':''%>"
+                    onclick="javascript:window.location.href='article/<%=hot.id%>'">
+                    <img src='<%=hot.thumbnail%>' data-src="holder.js/100px400?text=<%=hot.title%>&random=yes"
+                        class="d-block w-100" alt="..." style="width: 100px;height: 400px;">
+                </div>
+                <% }) %>
+        </div>
+        <% if (data['hots'].length>1) { %>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+        <% } %>
+    </div>
+
+    <div class="container mt-5">
+        <h2 class="mb-4">热门推荐</h2>
+        <div class="card-deck">
+            <% data['hots'].forEach(hot=> { %>
+                <div class="card">
+                    <img src="<%= hot.thumbnail %>" data-src="holder.js/100px200?text=<%=hot.title%>&random=yes"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= hot.title %>
+                        </h5>
+                        <p class="card-text"><small class="text-muted">
+                                <%= hot.time.toLocaleString() %>
+                            </small></p>
+                        <p class="card-text">
+                            <%= hot.content.replace(/<[^>]+>/g, "").substring(0, 100) %>...
+                        </p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <a href="/article/<%= hot.id%>" class="btn btn-primary float-right stretched-link">查看详情</a>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+    </div>
+
+    <div class="container mt-5 mArticle">
+        <h2 class="mb-4">最新博文</h2>
+        <div class="card-deck">
+            <% data['articles'].forEach(hot=> { %>
+                <div class="card">
+                    <img src="<%= hot.thumbnail %>" data-src="holder.js/100px200?text=<%=hot.title%>&random=yes"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= hot.title %>
+                        </h5>
+                        <p class="card-text"><small class="text-muted">
+                                <%= hot.time.toLocaleString() %>
+                            </small></p>
+                        <p class="card-text">
+                            <%= hot.content.replace(/<[^>]+>/g, "").substring(0, 100) %>...
+                        </p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <a href="/article/<%= hot.id%>" class="btn btn-primary float-right stretched-link">查看详情</a>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+    </div>
+
+    <div class="container wArticle">
+        <h2 class="mb-4">最新博文</h2>
+        <div class="row row-cols-4">
+            <% data['articles'].forEach(article=> { %>
+                <div class="col my-3">
+                    <div class="card h-100">
+                        <img src="<%= article.thumbnail %>"
+                            data-src="holder.js/100px150?text=<%=article.title%>&random=yes" class="card-img-top"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= article.title %>
+                            </h5>
+                            <p class="card-text"><small class="text-muted">
+                                    <%= article.time.toLocaleString() %>
+                                </small></p>
+                            <p class="card-text">
+                                <%= article.content.replace(/<[^>]+>/g, "").substring(0, 100) %>...
+                            </p>
+                            <a href="/article/<%= article.id %>" class="stretched-link"></a>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+    </div> -->
+
+    <%- include('footer.html') -%>

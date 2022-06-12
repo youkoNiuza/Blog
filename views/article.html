@@ -1,0 +1,54 @@
+<%- include('header.html') -%>
+<style>
+    @media screen and (min-width:768px) {
+        .live2d{
+            display: block;
+        }
+    }
+    @media screen and (max-width: 768px) {
+        .live2d{
+            display: none;
+        }
+    }
+</style>
+<canvas class="live2d" id="live2d" width="150" height="400"></canvas>
+    <div class="container mt-4">
+        <nav>
+            <ol class="breadcrumb bg-white">
+                <li class="breadcrumb-item"><a href="/">首页</a></li>
+                <li class="breadcrumb-item"><a href="/article/list/<%= data['article'].category_id %>"><%= data['article'].name %> </a></li>
+                <li class="breadcrumb-item active"><%= data['article'].title %> </li>
+            </ol>
+        </nav>
+        <div class="card content">
+            <div class="card-header bg-white">
+                <h3 class="card-title m-0"><%= data['article'].title %></h3>
+                <p class="text-muted small mt-2 m-0">
+                    <span class="mr-3">发表时间：<%= data['article'].time.toLocaleString() %></span>
+                    <span class="mr-3">最后编辑：<%= data['article'].editTime.toLocaleString() %></span>
+                    <span class="mr-1">点击：<%= data['article'].hits %></span>
+                </p>
+            </div>
+            <div class="card-body"><%- data['article'].content %></div>
+            <div class="card-footer bg-white border-0">
+                <% data['tabs'].forEach(tab => { %>
+                <span class="badge badge-pill"><%= tab.name %> </span>
+                <% }) %>
+            </div>
+        </div>
+        <nav>
+            <ul class="pagination mt-3">
+                <% if (data['prev']) { %>
+                <li class="page-item">
+                    <a class="page-link" href="/article/<%= data['prev'].id %>">上一篇：<%= data['prev'].title %></a>
+                </li>
+                <% } %>
+                <% if (data['next']) { %>
+                    <li class="page-item ml-auto">
+                        <a class="page-link" href="/article/<%= data['next'].id %>">下一篇：<%= data['next'].title %></a>
+                    </li>
+                    <% } %>
+            </ul>
+        </nav>
+    </div>
+    <%- include('footer.html') -%>
