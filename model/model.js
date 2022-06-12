@@ -3,9 +3,9 @@ module.exports = class Model {
     static conn = null
     static connection() {
         Model.conn = mysql.createConnection({
-            host: '112.74.87.145',
+            host: '127.0.0.1',
             user: 'blog',
-            password: 'AhR7mWHNzWcZc2wP',
+            password: '******',
             database:'blog'
         })
         Model.conn.connect(err => {
